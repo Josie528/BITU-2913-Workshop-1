@@ -8,6 +8,6 @@ Presentation (11 Jan 2021 to 24 Jan 2021)
 -------------------------
 Final presentation to supervisor and evaluator.
 
-Final Report 18 Jan 2021 to 24 Jan 2021
+Final Report (18 Jan 2021 to 24 Jan 2021)
 --------------
 Final report to evaluator.
