@@ -1,4 +1,4 @@
-# Workshop-1
+# Goat Farm Management System
 BITU 2913 Workshop I
 --------------------
 Learning Outcome
