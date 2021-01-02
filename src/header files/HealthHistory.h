@@ -11,15 +11,15 @@ public:
 	string healthHistoryID, sickness, treatment, symptom, goatID;
 	time_t dateOfRecord;
 
-	HealthHistory(string hID, string hsick, string htreat,
-		string hsymp, string hgID, time_t hdaterec)
+	HealthHistory(string hID, string hsick, string htreat, time_t hdaterec,
+		string hsymp, string hgID)
 	{
 		healthHistoryID = hID;
 		sickness = hsick;
 		treatment = htreat;
+		dateOfRecord = hdaterec;
 		symptom = hsymp;
 		goatID = hgID;
-		dateOfRecord = hdaterec;
 	}
 
 	HealthHistory()
@@ -27,9 +27,9 @@ public:
 		healthHistoryID = "";
 		sickness = "";
 		treatment = "";
+		dateOfRecord = 0000 - 00 - 00;
 		symptom = "";
 		goatID = "";
-		dateOfRecord = 0000-00-00;
 	}
 
 };
