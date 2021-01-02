@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-#include "timeSQL.h"
+#include "TimeUtility.h"
 using namespace std;
 
 #include <mysql/jdbc.h>
@@ -92,6 +92,6 @@ void ClassManager::displayFeedingRecord()
 void ClassManager::displayGoatShedInOut()
 {
     cout << "+-------------------------------- +";
-    cout << "   ----  GOAT SHED IN OUT  ----   ";
+    cout << "   ----  GOAT SHED IN OUT  ----\n";
     cout << "+ -------------------------------- +";
 }
