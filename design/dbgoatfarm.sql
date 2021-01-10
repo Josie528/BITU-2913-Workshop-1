@@ -66,7 +66,7 @@ CREATE Table MilkCollection
 	DateCollect DATE,
 	Quantity DECIMAL(4,2),
 
-  CONSTRAINT MilkCollection_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE,
+  	CONSTRAINT MilkCollection_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE,
 	CONSTRAINT MilkCollection_Staff_FK FOREIGN KEY (StaffID) REFERENCES Staff (StaffID),
 	CONSTRAINT MilkCollection_GoatShed_FK FOREIGN KEY (GoatShedID) REFERENCES GoatShed (GoatShedID)
 );
@@ -79,7 +79,7 @@ CREATE Table FeedingRecord
 	FeedingTime DATETIME,
 	Quantity DECIMAL(4,2),
 
-  CONSTRAINT FeedingRecord_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE,
+  	CONSTRAINT FeedingRecord_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE,
 	CONSTRAINT FeedingRecord_Feed_FK FOREIGN KEY (FeedID) REFERENCES Feed (FeedID),
 	CONSTRAINT FeedingRecord_Staff_FK FOREIGN KEY (StaffID) REFERENCES Staff (StaffID)  
 );
@@ -89,8 +89,8 @@ CREATE Table GoatShedInOut
 	GoatShedID VARCHAR(10),
 	GoatID VARCHAR(6),
 	CheckIn DATETIME,
-  CheckOut DATETIME,
+  	CheckOut DATETIME,
     
-  CONSTRAINT GoatShedInOut_GoatShed_FK FOREIGN KEY (GoatShedID) REFERENCES GoatShed (GoatShedID),
-  CONSTRAINT GoatShedInOut_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE
+  	CONSTRAINT GoatShedInOut_GoatShed_FK FOREIGN KEY (GoatShedID) REFERENCES GoatShed (GoatShedID),
+  	CONSTRAINT GoatShedInOut_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE
 );
