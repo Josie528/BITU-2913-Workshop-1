@@ -2,7 +2,7 @@ CREATE Table Feed
 (
 	FeedID VARCHAR(10),
 	FeedName VARCHAR(50),
-	Type VARCHAR(20),
+	FeedType VARCHAR(20),
 	Calcium DECIMAL(4,2),
 	Phosphorus DECIMAL(4,2),
 	Potassium DECIMAL(4,2),
