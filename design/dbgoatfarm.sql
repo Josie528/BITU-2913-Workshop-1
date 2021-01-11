@@ -76,8 +76,8 @@ CREATE Table FeedingRecord
 	GoatID VARCHAR(6),
 	FeedID VARCHAR(10),
 	StaffID VARCHAR(10),
-	FeedingTime DATETIME,
 	Quantity DECIMAL(4,2),
+	FeedingTime DATETIME,	
 
   	CONSTRAINT FeedingRecord_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE,
 	CONSTRAINT FeedingRecord_Feed_FK FOREIGN KEY (FeedID) REFERENCES Feed (FeedID),
