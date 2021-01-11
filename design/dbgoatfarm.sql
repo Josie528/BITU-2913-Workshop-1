@@ -48,11 +48,11 @@ CREATE Table GoatShed
 CREATE Table HealthHistory
 (
 	HealthHistoryID VARCHAR(10),
+	GoatID VARCHAR(6),
 	Sickness VARCHAR(30),
+	Symptom VARCHAR(150),
 	Treatment VARCHAR(150),
 	DateOfRecord DATE,
-	Symptom VARCHAR(150),
-	GoatID VARCHAR(6),
 
 	CONSTRAINT HealthHistory_PK PRIMARY KEY (HealthHistoryID),
 	CONSTRAINT HealthHistory_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE
