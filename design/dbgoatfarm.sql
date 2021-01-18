@@ -32,7 +32,7 @@ CREATE Table Staff
 CREATE TABLE GoatBirth
 (
 	GoatID VARCHAR(6),
-	GoatType VARCHAR(20),
+	GoatBreed VARCHAR(20),
 	GoatGender VARCHAR(7),
 	ParentGoatID VARCHAR(6),
 	HealthStatus VARCHAR(10),
