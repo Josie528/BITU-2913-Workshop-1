@@ -5,9 +5,9 @@
 
 CREATE Table Feed
 (
-	FeedID VARCHAR(10),
-	FeedName VARCHAR(50),
-	FeedType VARCHAR(20),
+	FeedID VARCHAR(10) NOT NULL,
+	FeedName VARCHAR(50) NOT NULL,
+	FeedType VARCHAR(20) NOT NULL,
 	Calcium DECIMAL(4,2),
 	Phosphorus DECIMAL(4,2),
 	Potassium DECIMAL(4,2),
@@ -19,45 +19,45 @@ CREATE Table Feed
 
 CREATE Table Staff
 (
-	StaffID VARCHAR(10),
+	StaffID VARCHAR(10) NOT NULL,
 	Name VARCHAR(30) NOT NULL,
-	StaffType VARCHAR(15),
-	Password VARCHAR(15),
-	TelNo VARCHAR(15),
-	Gender VARCHAR(10),
+	StaffType VARCHAR(15) NOT NULL,
+	Password VARCHAR(15) NOT NULL,
+	TelNo VARCHAR(15) NOT NULL,
+	Gender VARCHAR(10) NOT NULL,
 
 	CONSTRAINT Staff_PK PRIMARY KEY (StaffID)
 );
 
 CREATE TABLE GoatBirth
 (
-	GoatID VARCHAR(6),
-	GoatBreed VARCHAR(20),
-	GoatGender VARCHAR(7),
-	ParentGoatID VARCHAR(6),
-	HealthStatus VARCHAR(10),
-	GoatDOB DATE,
+	GoatID VARCHAR(6) NOT NULL,
+	GoatBreed VARCHAR(20) NOT NULL,
+	GoatGender VARCHAR(7) NOT NULL,
+	ParentGoatID VARCHAR(6) NOT NULL,
+	HealthStatus VARCHAR(10) NOT NULL,
+	GoatDOB DATE NOT NULL,
 
 	CONSTRAINT GoatBirth_PK PRIMARY KEY (GoatID)
 );
 
 CREATE Table GoatShed
 (
-	GoatShedID VARCHAR(10),
-	Title VARCHAR(20),
-	Description VARCHAR(80),
+	GoatShedID VARCHAR(10) NOT NULL,
+	Title VARCHAR(20) NOT NULL,
+	Description VARCHAR(80) NOT NULL,
 
 	CONSTRAINT GoatShed_PK PRIMARY KEY (GoatShedID)
 );
 
 CREATE Table HealthHistory
 (
-	HealthHistoryID VARCHAR(10),
-	GoatID VARCHAR(6),
-	Sickness VARCHAR(30),
-	Symptom VARCHAR(150),
-	Treatment VARCHAR(150),
-	DateOfRecord DATE,
+	HealthHistoryID VARCHAR(10) NOT NULL,
+	GoatID VARCHAR(6) NOT NULL,
+	Sickness VARCHAR(30) NOT NULL,
+	Symptom VARCHAR(150) NOT NULL,
+	Treatment VARCHAR(150) NOT NULL,
+	DateOfRecord DATE NOT NULL,
 
 	CONSTRAINT HealthHistory_PK PRIMARY KEY (HealthHistoryID),
 	CONSTRAINT HealthHistory_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE
@@ -65,38 +65,38 @@ CREATE Table HealthHistory
 
 CREATE Table MilkCollection
 (
-	GoatID VARCHAR(6),
-	StaffID VARCHAR(10),
-	GoatShedID VARCHAR(10),
-	DateCollect DATE,
-	Quantity DECIMAL(4,2),
+	GoatID VARCHAR(6) NOT NULL,
+	StaffID VARCHAR(10) NOT NULL,
+	GoatShedID VARCHAR(10) NOT NULL,
+	DateCollect DATE NOT NULL,
+	Quantity DECIMAL(4,2) NOT NULL,
 
   	CONSTRAINT MilkCollection_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE,
-	CONSTRAINT MilkCollection_Staff_FK FOREIGN KEY (StaffID) REFERENCES Staff (StaffID),
-	CONSTRAINT MilkCollection_GoatShed_FK FOREIGN KEY (GoatShedID) REFERENCES GoatShed (GoatShedID)
+	CONSTRAINT MilkCollection_Staff_FK FOREIGN KEY (StaffID) REFERENCES Staff (StaffID) ON DELETE CASCADE,
+	CONSTRAINT MilkCollection_GoatShed_FK FOREIGN KEY (GoatShedID) REFERENCES GoatShed (GoatShedID) ON DELETE CASCADE
 );
 
 CREATE Table FeedingRecord 
 (
-	GoatID VARCHAR(6),
-	FeedID VARCHAR(10),
-	StaffID VARCHAR(10),
-	Quantity DECIMAL(4,2),
-	FeedingTime DATETIME,	
+	GoatID VARCHAR(6) NOT NULL,
+	FeedID VARCHAR(10) NOT NULL,
+	StaffID VARCHAR(10) NOT NULL,
+	Quantity DECIMAL(4,2) NOT NULL,
+	FeedingTime DATETIME NOT NULL,	
 
   	CONSTRAINT FeedingRecord_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE,
-	CONSTRAINT FeedingRecord_Feed_FK FOREIGN KEY (FeedID) REFERENCES Feed (FeedID),
-	CONSTRAINT FeedingRecord_Staff_FK FOREIGN KEY (StaffID) REFERENCES Staff (StaffID)  
+	CONSTRAINT FeedingRecord_Feed_FK FOREIGN KEY (FeedID) REFERENCES Feed (FeedID) ON DELETE CASCADE,
+	CONSTRAINT FeedingRecord_Staff_FK FOREIGN KEY (StaffID) REFERENCES Staff (StaffID) ON DELETE CASCADE 
 );
 
 CREATE Table GoatShedInOut
 (
-	GoatShedID VARCHAR(10),
-	GoatID VARCHAR(6),
+	GoatShedID VARCHAR(10) NOT NULL,
+	GoatID VARCHAR(6) NOT NULL,
 	CheckIn DATETIME,
   	CheckOut DATETIME,
     
-  	CONSTRAINT GoatShedInOut_GoatShed_FK FOREIGN KEY (GoatShedID) REFERENCES GoatShed (GoatShedID),
+  	CONSTRAINT GoatShedInOut_GoatShed_FK FOREIGN KEY (GoatShedID) REFERENCES GoatShed (GoatShedID) ON DELETE CASCADE,
   	CONSTRAINT GoatShedInOut_GoatBirth_FK FOREIGN KEY (GoatID) REFERENCES GoatBirth (GoatID) ON DELETE CASCADE
 );
 
@@ -104,15 +104,15 @@ CREATE Table GoatShedInOut
 -- I N S E R T  S T A T M E N T -- 
 ----------------------------------
 
-INSERT INTO Feed VALUES ('GF001','Alfalfa Hay'.'Hay',,'16.8','2.6','24.6','9','30');
+INSERT INTO Feed VALUES ('GF001','Alfalfa Hay','Hay','16.8','2.6','24.6','9','30');
 INSERT INTO Feed VALUES ('GF002','Maize Grain','Grain','0.5','3','3.9','2','21');
 INSERT INTO Feed VALUES ('GF003','Sweet Potato Vine','Plant by-product','9.5','2.9','24.9','2','70');
 INSERT INTO Feed VALUES ('GF004','Sunflower Seed','Oil seed','2.6','6','9.1','0.00','0.00');
 
-INSERT INTO Staff VALUES ('S23-9786BV','Pang Jia Mei','Veterinarian','S1567250D','012-5640451','Female');
+INSERT INTO Staff VALUES ('S23-9786BV','Lim Ker Xin','Veterinarian','KerXinAplus12','012-5640451','Female');
 INSERT INTO Staff VALUES ('S33-49804F','Joshua Bryan','Farmer','M96021402ac','012-5631697','Male');
 INSERT INTO Staff VALUES ('S48-79628S','Ooi Xue Ting','Supervisor','P@s$w0rd','018-3254508','Female');
-INSERT INTO Staff VALUES ('S05-28021A','Lim Ker Xin','Administrator','KerXinAplus12','017-4528791','Female');
+INSERT INTO Staff VALUES ('S05-28021A','Pang Jia Mei','Administrator','S1567250D','017-4528791','Female');
 INSERT INTO Staff VALUES ('S05-19623F','Thum Sze Khai','Farmer','EeeewW32','012-5584694','Male');
 INSERT INTO Staff VALUES ('S02-17534F','Gustaf Daren','Farmer','14125@!1','011-3278450','Male');
 
