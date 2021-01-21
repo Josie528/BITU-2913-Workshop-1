@@ -15,21 +15,21 @@ public:
 		string hsymp, string hgID)
 	{
 		healthHistoryID = hID;
-		sickness = hsick;
-		treatment = htreat;
-		dateOfRecord = hdaterec;
-		symptom = hsymp;
 		goatID = hgID;
+		sickness = hsick;
+		symptom = hsymp;
+		treatment = htreat;
+		dateOfRecord = hdaterec;	
 	}
 
 	HealthHistory()
 	{
 		healthHistoryID = "";
+		goatID = "";
 		sickness = "";
+		symptom = "";
 		treatment = "";
 		dateOfRecord = 0000 - 00 - 00;
-		symptom = "";
-		goatID = "";
 	}
 
 };
