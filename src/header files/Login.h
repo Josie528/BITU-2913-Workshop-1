@@ -6,7 +6,6 @@
 class Login
 {
 public:
-	void welcome();
 
 	void InputName(string &Name, string &Password);
 
